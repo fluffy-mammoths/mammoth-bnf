@@ -9,14 +9,14 @@ program: function functions
 functions: function functions
 functions: EPSILON
 
-function: 'def' NAME '(' parameters ')' ':' type '=' suite
+function: 'def' NAME '(' parameters ')' ':' TYPE '=' suite
 
 parameters: parameter parameter_trails
 parameters: EPSILON
 parameter_trails: ',' parameters
 parameter_trails: EPSILON
 
-parameter: NAME ':' type
+parameter: NAME ':' TYPE
 
 suite: NEWLINE INDENT statements return_statement DEDENT
 
@@ -31,7 +31,7 @@ statement: rvalue
 
 return_statement: 'return' rvalue
 
-var_declaration: 'let' NAME ':' type 'be' assignment
+var_declaration: 'let' NAME ':' TYPE 'be' assignment
 
 assignment: '=' rvalue
 
