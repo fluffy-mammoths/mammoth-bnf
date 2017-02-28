@@ -13,7 +13,7 @@ def divideByThree(x: Int): Int =
 def multiplyByFour(x: Int): Int =
   return x * 4
 
-def main() =
+def main(): void =
   let x be 7
-  multiplyByFour(subtractOne(divideByThree(addTwo(x))))
+  return multiplyByFour(subtractOne(divideByThree(addTwo(x))))
 ```
