@@ -1,0 +1,52 @@
+# Grammar for Mammoth
+
+# Start symbols for the grammar:
+#   EPSILON is an empty value
+#   NAME is a string identifier
+
+program: function functions
+
+functions: function functions
+functions: EPSILON
+
+function: 'def' NAME '(' parameters ')' ':' type '=' suite
+
+parameters: parameter parameter_trails
+parameters: EPSILON
+parameter_trails: ',' parameters
+parameter_trails: EPSILON
+
+parameter: NAME ':' type
+
+suite: NEWLINE INDENT statements return_statement DEDENT
+
+statements: statement statement_trails
+statements: EPSILON
+statement_trails: NEWLINE statement
+statement_trails: EPSILON
+
+statement: var_declaration
+statement: function_call
+statement: rvalue
+
+return_statement: 'return' rvalue
+
+var_declaration: 'let' NAME ':' type 'be' assignment
+
+assignment: '=' rvalue
+
+rvalue: string_literal
+rvalue: integer
+rvalue: variable
+
+variable: NAME
+
+string_literal: "characters"
+integer: [0-9]+
+
+function_call: NAME '(' passed_arguments ')'
+
+passed_arguments: rvalue passed_arguments_trails
+passed_arguments: EPSILON
+passed_arguments_trails: ',' passed_arguments
+passed_arguments_trails: EPSILON
